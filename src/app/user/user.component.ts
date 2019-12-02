@@ -1,42 +1,33 @@
 import { Component, OnInit } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
-import { FormControl } from '@angular/forms';
-import { User } from '../user';
 
+import { User } from '../user';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss']
 })
-
 export class UserComponent implements OnInit {
-user = new User();
+  user = new User();
 
-username = new FormControl('');
-email = new FormControl('');
-password = new FormControl('');
-street = new FormControl('');
-number = new FormControl('');
-postcode = new FormControl('');
-city = new FormControl('');
+  userForm = new FormGroup({
+    username: new FormControl(''),
+    credentials : new FormGroup({
+    email: new FormControl(''),
+    password: new FormControl(''),
+    }),
+    street: new FormControl(''),
+    number: new FormControl(''),
+    postcode: new FormControl(''),
+    city: new FormControl('')
+  });
 
+  constructor() {}
 
-constructor() { }
+  ngOnInit() {}
 
-ngOnInit() {
+  onSubmit() {
+    console.log(this.userForm.value);
   }
-
-signIn() {
-  this.user = {
-    username : this.username.value,
-    email : this.email.value,
-    password : this.password.value,
-    street : this.city.value,
-    number : this.number.value,
-    postcode : this.postcode.value,
-    city : this.city.value
-  };
-
-}
 }

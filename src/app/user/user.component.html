@@ -1,60 +1,68 @@
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
 <div>
   <div>
     <label>
       Username:
-      <input type="text" [formControl]="username" >
+      <input type="text" formControlName="username" >
     </label>
   </div>
+
+<div formGroupName="credentials">
+
 
   <div>
     <label>
       Email:
-      <input type="email" [formControl]="email" >
+      <input type="email" formControlName="email" >
     </label>
   </div>
 
   <div>
     <label>
       Password:
-      <input type="password" [formControl]="password" >
+      <input type="password" formControlName="password" >
     </label>
   </div>
+
+
+
+</div>
+
+
 
   Adresse :
 
   <div>
     <label>
       Street:
-      <input type="text" [formControl]="street" >
+      <input type="text" formControlName="street" >
     </label>
   </div>
 
   <div>
     <label>
-      Number:
-      <input type="text" [formControl]="number" >
-    </label>
-  </div>
+      Number:name
 
   <div>
     <label>
       PostCode:
-      <input type="text" [formControl]="postcode" >
+      <input type="text" formControlName="postcode" >
     </label>
   </div>
   <div>
     <label>
       City:
-      <input type="text" [formControl]="city" >
+      <input type="text" formControlName="city" >
     </label>
   </div>
-  <button type="submit" (click)="signIn()">INSCRIPTION</button>
+  <button type="submit" [disabled]="!userForm.valid" >Inscription</button>
 
 </div>
+</form>
 
 
 
-<div *ngIf="user">
+<!-- <div *ngIf="user">
   <p>Username : {{ user.username }}</p>
   <p>Email: {{ user.email }}</p>
   <p>Password: {{ user.password }} </p>
@@ -63,4 +71,4 @@
   <p>Number: {{ user.number }} </p>
   <p>PostCode: {{user.postcode }}</p>
   <p> City: {{ user.city }} </p>
-</div>
+</div> -->
