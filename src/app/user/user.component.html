@@ -1,0 +1,66 @@
+<div>
+  <div>
+    <label>
+      Username:
+      <input type="text" [formControl]="username" >
+    </label>
+  </div>
+
+  <div>
+    <label>
+      Email:
+      <input type="email" [formControl]="email" >
+    </label>
+  </div>
+
+  <div>
+    <label>
+      Password:
+      <input type="password" [formControl]="password" >
+    </label>
+  </div>
+
+  Adresse :
+
+  <div>
+    <label>
+      Street:
+      <input type="text" [formControl]="street" >
+    </label>
+  </div>
+
+  <div>
+    <label>
+      Number:
+      <input type="text" [formControl]="number" >
+    </label>
+  </div>
+
+  <div>
+    <label>
+      PostCode:
+      <input type="text" [formControl]="postcode" >
+    </label>
+  </div>
+  <div>
+    <label>
+      City:
+      <input type="text" [formControl]="city" >
+    </label>
+  </div>
+  <button type="submit" (click)="signIn()">INSCRIPTION</button>
+
+</div>
+
+
+
+<div *ngIf="user">
+  <p>Username : {{ user.username }}</p>
+  <p>Email: {{ user.email }}</p>
+  <p>Password: {{ user.password }} </p>
+  Adresse :
+  <p>Street: {{ user.street }} </p>
+  <p>Number: {{ user.number }} </p>
+  <p>PostCode: {{user.postcode }}</p>
+  <p> City: {{ user.city }} </p>
+</div>
