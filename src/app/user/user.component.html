@@ -1,5 +1,5 @@
 <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-<div>
+
   <div>
     <label>
       Username:
@@ -7,15 +7,23 @@
     </label>
   </div>
 
-<div formGroupName="credentials">
+  <div formGroupName="credentials">
 
 
-  <div>
-    <label>
-      Email:
-      <input type="email" formControlName="email" >
-    </label>
+    <div>
+      <label>
+        Email:
+        <input type="email" formControlName="email" >
+        <div *ngIf="userForm.get('credentials.email').errors && !userForm.get('credentials.email').pristine" class="error-msg">
+          <div [hidden]="!userForm.get('credentials.email').errors.required">email is required.</div>
+          <div [hidden]="!userForm.get('credentials.email').invalid">email is invalid.</div>
+      </div>
+      </label>
+    </div>
+
   </div>
+
+
 
   <div>
     <label>
@@ -23,12 +31,6 @@
       <input type="password" formControlName="password" >
     </label>
   </div>
-
-
-
-</div>
-
-
 
   Adresse :
 
@@ -41,7 +43,10 @@
 
   <div>
     <label>
-      Number:name
+      Number:
+      <input type="text" formControlName="number" >
+    </label>
+  </div>
 
   <div>
     <label>
@@ -49,15 +54,17 @@
       <input type="text" formControlName="postcode" >
     </label>
   </div>
+
   <div>
     <label>
       City:
       <input type="text" formControlName="city" >
     </label>
   </div>
-  <button type="submit" [disabled]="!userForm.valid" >Inscription</button>
 
-</div>
+  <button type="submit"  >Inscription</button>
+
+
 </form>
 
 
